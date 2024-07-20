@@ -6,7 +6,7 @@ import { ToolbarComponent } from '../../shared/toolbar/toolbar.component';
   selector: 'app-list',
   standalone: true,
   imports: [MatCardModule, ToolbarComponent],
-  templateUrl: './list.component.html',
-  styleUrl: './list.component.scss',
+  templateUrl: './song-list.component.html',
+  styleUrl: './song-list.component.scss',
 })
-export class ListComponent {}
+export class SongListComponent {}
