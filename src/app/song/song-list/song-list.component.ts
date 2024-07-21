@@ -7,8 +7,9 @@ import { CommonModule, NgFor } from '@angular/common';
 import { MatButtonModule } from '@angular/material/button';
 import { Router, RouterModule } from '@angular/router';
 import { SongInterface } from '../../shared/interfaces/song.interface';
-import { SongStateService } from '../../shared/services/song-state.service';
+import { SongStateService } from '../../shared/services/states/song-state.service';
 import { Observable } from 'rxjs';
+import { ArtistInterface } from '../../shared/interfaces/artist.interface';
 
 @Component({
   selector: 'app-list',
@@ -38,5 +39,9 @@ export class SongListComponent {
 
   goToDetail(id: number) {
     this.router.navigate(['/song-detail', id]);
+  }
+
+  getArtistName(artist?: number | ArtistInterface) {
+    return !artist || typeof artist === 'number' ? '' : `(${artist.name})`;
   }
 }

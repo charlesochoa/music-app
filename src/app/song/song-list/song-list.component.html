@@ -4,7 +4,7 @@
     <div class="songs-list">
       <mat-card *ngFor="let song of songs$ | async" class="song-card" (click)="goToDetail(song.id)">
         <mat-card-header>
-          <mat-card-title>{{ song.title }} ({{ song.artist }})</mat-card-title>
+          <mat-card-title>{{ song.title }} {{ getArtistName(song.artist) }}</mat-card-title>
         </mat-card-header>
         <div class="song-image">
           <img mat-card-image [src]="song.poster" alt="{{ song.title }}">

@@ -8,7 +8,7 @@ import { ArtistInterface } from '../interfaces/artist.interface';
   providedIn: 'root',
 })
 export class ArtistService {
-  private apiUrl = `${SERVER_ENDPOINT}/artists`;
+  private apiUrl = `${SERVER_ENDPOINT}artists`;
   constructor(private http: HttpClient) {}
 
   get(): Observable<ArtistInterface[]> {
