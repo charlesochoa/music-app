@@ -44,13 +44,12 @@ export class SongDetailComponent {
     this.song = foundSong;
   }
 
-  removeGenre(genre: string) {
-    //TODO missing action
-    console.log('🚀 ~ SongDetailComponent ~ genre:', genre);
+  editSong() {
+    this.router.navigate(['song-form', this.song?.id || '']);
   }
 
-  removeCompany(company: string) {
-    //TODO missing action
-    console.log('🚀 ~ SongDetailComponent ~ company:', company);
+  deleteSong() {
+    this.songStateService.deleteSong(this.song?.id);
+    this.router.navigate(['']);
   }
 }
