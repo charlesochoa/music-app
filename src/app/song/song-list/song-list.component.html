@@ -1,0 +1,24 @@
+<app-toolbar title="Canciones"></app-toolbar>
+<div class="content">
+  <mat-grid-list cols="12" >
+    <div class="songs-list">
+      <mat-card *ngFor="let song of songs$ | async" class="song-card" (click)="goToDetail(song.id)">
+        <mat-card-header>
+          <mat-card-title>{{ song.title }} ({{ song.artist }})</mat-card-title>
+        </mat-card-header>
+        <div class="song-image">
+          <img mat-card-image [src]="song.poster" alt="{{ song.title }}">
+        </div>
+        <mat-card-content>
+          <div>
+            <span *ngFor="let genre of song.genre" class="song-genre"># {{ genre }}</span>
+          </div>
+        </mat-card-content>
+      </mat-card>
+      <button mat-fab class="fab-button">
+        <mat-icon>add</mat-icon>
+      </button>
+    </div>
+  </mat-grid-list>
+</div>
+
