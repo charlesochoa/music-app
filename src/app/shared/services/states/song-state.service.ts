@@ -15,6 +15,7 @@ export class SongStateService {
   private songsSubject: BehaviorSubject<SongModel[]> = new BehaviorSubject<
     SongModel[]
   >([]);
+
   public songs$: Observable<SongModel[]> = this.songsSubject.asObservable();
 
   constructor(
@@ -64,5 +65,51 @@ export class SongStateService {
   getSongById(id: number): SongModel | undefined {
     const currentSongs = this.songsSubject.getValue();
     return currentSongs.find((song) => song.id === id);
+  }
+
+  getAllGenres(): string[] {
+    const currentSongs = this.songsSubject.getValue();
+    const genres: string[] = [];
+    currentSongs.forEach((song) => {
+      genres.push(...song.genre);
+    });
+    return [...new Set(genres)];
+  }
+
+  getLastId(): number {
+    const currentSongs = this.songsSubject.getValue();
+    return Math.max(...currentSongs.map((song) => song.id || 0));
+  }
+
+  addSong(newSong: SongInterface) {
+    const currentSongs = this.songsSubject.getValue();
+    const updateIndex = currentSongs.findIndex(
+      (song) => song.id === newSong.id
+    );
+    if (updateIndex !== -1) {
+      currentSongs[updateIndex] = new SongModel(newSong);
+      this.songsSubject.next(currentSongs);
+      return;
+    }
+    this.songsSubject.next([
+      ...currentSongs,
+      new SongModel({
+        ...newSong,
+        id: this.getLastId() + 1,
+      }),
+    ]);
+  }
+
+  deleteSong(id?: number) {
+    if (!id) return;
+    const currentSongs = this.songsSubject.getValue();
+    const deleteIndex = currentSongs.findIndex((song) => song.id === id);
+    if (deleteIndex === -1) return;
+    console.log(
+      '🚀 ~ SongStateService ~ deleteSong ~ deleteIndex:',
+      deleteIndex
+    );
+    currentSongs.splice(deleteIndex, 1);
+    this.songsSubject.next([...currentSongs]);
   }
 }
