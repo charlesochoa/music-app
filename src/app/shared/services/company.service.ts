@@ -8,7 +8,7 @@ import { CompanyInterface } from '../interfaces/company.interface';
   providedIn: 'root',
 })
 export class CompanyService {
-  private apiUrl = `${SERVER_ENDPOINT}/companies`;
+  private apiUrl = `${SERVER_ENDPOINT}companies`;
   constructor(private http: HttpClient) {}
 
   get(): Observable<CompanyInterface[]> {
