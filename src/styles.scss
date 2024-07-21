@@ -8,3 +8,10 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   background-color: whitesmoke;
   height: 100%;
 }
+:root {
+  --mdc-filled-text-field-container-color: white;
+}
+
+.mat-mdc-chip-focus-overlay {
+  border-color: transparent;
+}

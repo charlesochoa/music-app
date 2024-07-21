@@ -5,6 +5,7 @@ export interface SongInterface {
   id: number;
   title: string;
   poster: string;
+  country?: string; //TODO doesn't appear in the mocked data but in the creation form
   genre: string[];
   year: number;
   duration: number;

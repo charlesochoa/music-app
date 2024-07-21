@@ -3,12 +3,12 @@ import { MatCardModule } from '@angular/material/card';
 import { ToolbarComponent } from '../../shared/components/toolbar/toolbar.component';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatIconModule } from '@angular/material/icon';
-import { CommonModule, NgFor } from '@angular/common';
+import { CommonModule } from '@angular/common';
 import { MatButtonModule } from '@angular/material/button';
 import { Router, RouterModule } from '@angular/router';
-import { SongInterface } from '../../shared/interfaces/song.interface';
-import { SongStateService } from '../../shared/services/song-state.service';
+import { SongStateService } from '../../shared/services/states/song-state.service';
 import { Observable } from 'rxjs';
+import { SongModel } from '../../shared/models/song.model';
 
 @Component({
   selector: 'app-list',
@@ -21,13 +21,12 @@ import { Observable } from 'rxjs';
     MatIconModule,
     CommonModule,
     RouterModule,
-    NgFor,
   ],
   templateUrl: './song-list.component.html',
   styleUrl: './song-list.component.scss',
 })
 export class SongListComponent {
-  songs$: Observable<SongInterface[]>;
+  songs$: Observable<SongModel[]>;
 
   constructor(
     private router: Router,
