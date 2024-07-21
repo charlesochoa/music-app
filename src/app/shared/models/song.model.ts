@@ -3,7 +3,7 @@ import { CompanyInterface } from '../interfaces/company.interface';
 import { SongInterface } from '../interfaces/song.interface';
 
 export class SongModel implements SongInterface {
-  id: number;
+  id?: number;
   title: string;
   poster: string;
   country?: string;
@@ -25,6 +25,19 @@ export class SongModel implements SongInterface {
     this.rating = origin.rating;
     this.artist = origin.artist;
     this.companies = origin.companies;
+  }
+
+  static newSong(): SongModel {
+    return new SongModel({
+      title: '',
+      poster: '',
+      genre: [],
+      companies: [],
+      year: new Date().getFullYear(),
+      duration: 0,
+      rating: 0,
+      artist: 0,
+    });
   }
 
   getArtistName() {

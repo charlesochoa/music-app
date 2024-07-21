@@ -2,7 +2,7 @@
 <div class="content">
   <mat-grid-list cols="12" >
     <div class="songs-list">
-      <mat-card *ngFor="let song of songs$ | async" class="song-card" (click)="goToDetail(song.id)">
+      <mat-card *ngFor="let song of songs" class="song-card" (click)="goToDetail(song.id)">
         <mat-card-header>
           <mat-card-title>{{ song.title }} ({{ song.getArtistName() }})</mat-card-title>
         </mat-card-header>
@@ -15,7 +15,7 @@
           </div>
         </mat-card-content>
       </mat-card>
-      <button mat-fab class="fab-button">
+      <button mat-fab class="create-button" (click)="goToCreate()">
         <mat-icon>add</mat-icon>
       </button>
     </div>
