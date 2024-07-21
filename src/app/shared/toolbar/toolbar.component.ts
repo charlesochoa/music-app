@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -10,4 +10,6 @@ import { MatToolbarModule } from '@angular/material/toolbar';
   templateUrl: './toolbar.component.html',
   styleUrl: './toolbar.component.scss',
 })
-export class ToolbarComponent {}
+export class ToolbarComponent {
+  @Input() title: string = '';
+}
