@@ -1,0 +1,47 @@
+
+.song-image {
+  margin: 8px;
+  padding: 8px;
+  border-radius: 4px;
+  height: 300px;
+  overflow: hidden; //This is because in the mockups the show
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.song-detail {
+  margin: 16px;
+  padding: 16px;
+  background-color: white;
+  border-radius: 16px;
+
+
+  .song-header {
+    margin-top: 26px;
+  }
+
+  .song-content {
+    padding: 8px;
+  }
+}
+
+.fab-edit {
+  position: fixed;
+  bottom: 16px;
+  right: 96px;
+  z-index: 1000;
+  border-radius: 50%;
+}
+
+
+.fab-delete {
+  position: fixed;
+  bottom: 16px;
+  right: 16px;
+  z-index: 1000;
+  border-radius: 50%;
+}
+
+.bigger-list-item {
+  height: 80px;
+}
