@@ -1,27 +1,34 @@
 import { Component } from '@angular/core';
 import { MatCardModule } from '@angular/material/card';
-import { ToolbarComponent } from '../../shared/toolbar/toolbar.component';
+import { ToolbarComponent } from '../../shared/components/toolbar/toolbar.component';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatIconModule } from '@angular/material/icon';
 import { CommonModule, NgFor } from '@angular/common';
+import { MatButtonModule } from '@angular/material/button';
+import { Router, RouterModule } from '@angular/router';
+import { SongInterface } from '../../shared/interfaces/song.interface';
 
 @Component({
   selector: 'app-list',
   standalone: true,
   imports: [
+    MatButtonModule,
     MatCardModule,
     ToolbarComponent,
     MatGridListModule,
     MatIconModule,
     CommonModule,
+    RouterModule,
     NgFor,
   ],
   templateUrl: './song-list.component.html',
   styleUrl: './song-list.component.scss',
 })
 export class SongListComponent {
+  constructor(private router: Router) {}
+
   // TODO: extract data calling the json-server
-  songs = [
+  songs: SongInterface[] = [
     {
       id: 1,
       title: 'Who did you think i was',
@@ -63,4 +70,8 @@ export class SongListComponent {
       artist: 4,
     },
   ];
+
+  goToDetail(id: number) {
+    this.router.navigate(['/song-detail', id]);
+  }
 }

@@ -2,7 +2,7 @@
 <div class="content">
   <mat-grid-list cols="12" >
     <div class="songs-list">
-      <mat-card *ngFor="let song of songs" class="song-card">
+      <mat-card *ngFor="let song of songs" class="song-card" (click)="goToDetail(song.id)">
         <mat-card-header>
           <mat-card-title>{{ song.title }} ({{ song.artist }})</mat-card-title>
         </mat-card-header>
@@ -10,7 +10,9 @@
           <img mat-card-image [src]="song.poster" alt="{{ song.title }}">
         </div>
         <mat-card-content>
-          <div *ngFor="let genre of song.genre" class="song-genre"># {{ genre }}</div>
+          <div>
+            <span *ngFor="let genre of song.genre" class="song-genre"># {{ genre }}</span>
+          </div>
         </mat-card-content>
       </mat-card>
       <button mat-fab class="fab-button">
