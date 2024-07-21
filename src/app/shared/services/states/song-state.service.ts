@@ -105,6 +105,11 @@ export class SongStateService {
     const currentSongs = this.songsSubject.getValue();
     const deleteIndex = currentSongs.findIndex((song) => song.id === id);
     if (deleteIndex === -1) return;
-    this.songsSubject.next([...currentSongs.splice(deleteIndex, 1)]);
+    console.log(
+      '🚀 ~ SongStateService ~ deleteSong ~ deleteIndex:',
+      deleteIndex
+    );
+    currentSongs.splice(deleteIndex, 1);
+    this.songsSubject.next([...currentSongs]);
   }
 }
