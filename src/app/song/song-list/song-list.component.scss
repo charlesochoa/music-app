@@ -1,0 +1,32 @@
+.song-card {
+  margin: 16px;
+  padding: 16px;
+  background-color: white;
+  border-radius: 16px;
+
+  .song-image {
+    margin: 8px;
+    padding: 8px;
+    border-radius: 4px;
+    height: 300px;
+    overflow: hidden; //This is because in the mockups the show
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  mat-card-title {
+    margin-top: 26px;
+  }
+
+  mat-card-content {
+    padding: 8px;
+  }
+}
+
+.fab-button {
+  position: fixed;
+  bottom: 16px;
+  right: 16px;
+  z-index: 1000;
+}
