@@ -7,5 +7,5 @@ export interface CompanyInterface {
   createYear: number;
   employees: number;
   rating: number;
-  songs?: SongInterface | number[];
+  songs?: number[]; //TODO not required to be songInterface for now
 }

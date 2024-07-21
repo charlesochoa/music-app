@@ -2,6 +2,7 @@ import { Component, Input } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatToolbarModule } from '@angular/material/toolbar';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-toolbar',
@@ -12,4 +13,11 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 })
 export class ToolbarComponent {
   @Input() title: string = '';
+  @Input() icon: string = 'arrow_back';
+  @Input() redirect: string = '';
+  constructor(private router: Router) {}
+
+  goBack() {
+    if (this.icon === 'arrow_back') this.router.navigate([this.redirect]);
+  }
 }
