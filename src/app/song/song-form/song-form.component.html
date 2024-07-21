@@ -1,0 +1,110 @@
+<app-toolbar title="{{ song?.title || 'Nueva Canción' }}"></app-toolbar>
+<form [formGroup]="songForm" (ngSubmit)="onSubmit()">
+  <div class="form-group">
+    <mat-form-field>
+      <mat-label>Título</mat-label>
+      <input
+        matInput
+        formControlName="title"
+        placeholder="Indique el título de la canción"
+      />
+    </mat-form-field>
+  </div>
+  <div class="form-group">
+    <mat-form-field>
+      <mat-label>Póster</mat-label>
+      <input
+        matInput
+        formControlName="poster"
+        placeholder="Coloque la url del póster de la canción"
+      />
+    </mat-form-field>
+  </div>
+
+  <div class="form-group">
+    <mat-form-field>
+      <mat-label>Artista</mat-label>
+      <mat-select formControlName="artist">
+        <mat-option *ngFor="let artist of artists" [value]="artist.id">{{
+          artist.name
+        }}</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+
+  <div class="form-group">
+    <mat-form-field>
+      <mat-label>Género</mat-label>
+      <mat-select formControlName="genre" multiple>
+        <mat-option *ngFor="let genre of genres" [value]="genre">{{
+          genre
+        }}</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+
+  <div class="form-group">
+    <mat-form-field>
+      <mat-label>Compañía discográfica</mat-label>
+      <mat-select formControlName="companies" multiple>
+        <mat-option *ngFor="let company of companies" [value]="company.id">{{
+          company.name
+        }}</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+
+  <div class="form-group">
+    <mat-form-field>
+      <mat-label>País</mat-label>
+      <mat-select formControlName="country">
+        <mat-option *ngFor="let country of countries" [value]="country">{{
+          country
+        }}</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+
+  <div class="form-group">
+    <mat-form-field>
+      <mat-label>Año</mat-label>
+      <input matInput [matDatepicker]="dp" formControlName="year" readonly />
+      <mat-datepicker-toggle matIconSuffix [for]="dp"></mat-datepicker-toggle>
+      <mat-datepicker
+        #dp
+        startView="multi-year"
+        (yearSelected)="setYear($event, dp)"
+        panelClass="year-picker"
+      >
+      </mat-datepicker>
+    </mat-form-field>
+  </div>
+
+  <div class="form-group">
+    <mat-form-field>
+      <mat-label>Duración</mat-label>
+      <input
+        matInput
+        formControlName="duration"
+        placeholder="Indique la duración en minutos"
+        type="number"
+      />
+    </mat-form-field>
+  </div>
+  <div class="form-group">
+    <mat-form-field>
+      <mat-label>Puntuación</mat-label>
+      <input
+        matInput
+        formControlName="rating"
+        placeholder="Indique la puntuación"
+        type="number"
+        min="0"
+        max="10"
+      />
+    </mat-form-field>
+  </div>
+  <button class="save-button" mat-flat-button type="submit" color="primary">
+    Guardar
+  </button>
+</form>
