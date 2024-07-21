@@ -22,4 +22,9 @@ export class CompanyStateService {
       .pipe(tap((companys) => this.companysSubject.next(companys)))
       .subscribe();
   }
+
+  getAllCountries() {
+    const currentCompanies = this.companysSubject.getValue();
+    return [...new Set(currentCompanies.map((company) => company.country))];
+  }
 }

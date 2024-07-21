@@ -1,0 +1,16 @@
+.form-group {
+  margin: 16px;
+}
+
+mat-form-field {
+  width: 100%;
+
+}
+
+.save-button {
+  position: fixed;
+  bottom: 16px;
+  left: 16px;
+  right: 16px;
+  z-index: 1000;
+}

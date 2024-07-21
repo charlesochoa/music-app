@@ -26,7 +26,6 @@
           <mat-chip-set>
             <mat-chip
               *ngFor="let companyName of song.getCompaniesNames()"
-              (click)="removeCompany(companyName)"
               disabled
               >{{ companyName }}</mat-chip
             >
@@ -37,7 +36,6 @@
           <mat-chip-set>
             <mat-chip
               *ngFor="let genre of song.genre"
-              (click)="removeGenre(genre)"
               disabled
               >{{ genre }}</mat-chip
             >
@@ -54,10 +52,10 @@
       </mat-list>
     </div>
   </div>
-  <button mat-fab class="fab-edit">
+  <button mat-fab class="fab-edit" (click)="editSong()">
     <mat-icon>edit</mat-icon>
   </button>
-  <button mat-fab class="fab-delete">
+  <button mat-fab class="fab-delete" (click)="deleteSong()">
     <mat-icon>delete</mat-icon>
   </button>
 </div>
