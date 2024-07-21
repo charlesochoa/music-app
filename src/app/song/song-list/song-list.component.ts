@@ -3,13 +3,12 @@ import { MatCardModule } from '@angular/material/card';
 import { ToolbarComponent } from '../../shared/components/toolbar/toolbar.component';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatIconModule } from '@angular/material/icon';
-import { CommonModule, NgFor } from '@angular/common';
+import { CommonModule } from '@angular/common';
 import { MatButtonModule } from '@angular/material/button';
 import { Router, RouterModule } from '@angular/router';
-import { SongInterface } from '../../shared/interfaces/song.interface';
 import { SongStateService } from '../../shared/services/states/song-state.service';
 import { Observable } from 'rxjs';
-import { ArtistInterface } from '../../shared/interfaces/artist.interface';
+import { SongModel } from '../../shared/models/song.model';
 
 @Component({
   selector: 'app-list',
@@ -22,13 +21,12 @@ import { ArtistInterface } from '../../shared/interfaces/artist.interface';
     MatIconModule,
     CommonModule,
     RouterModule,
-    NgFor,
   ],
   templateUrl: './song-list.component.html',
   styleUrl: './song-list.component.scss',
 })
 export class SongListComponent {
-  songs$: Observable<SongInterface[]>;
+  songs$: Observable<SongModel[]>;
 
   constructor(
     private router: Router,
@@ -39,9 +37,5 @@ export class SongListComponent {
 
   goToDetail(id: number) {
     this.router.navigate(['/song-detail', id]);
-  }
-
-  getArtistName(artist?: number | ArtistInterface) {
-    return !artist || typeof artist === 'number' ? '' : `(${artist.name})`;
   }
 }
