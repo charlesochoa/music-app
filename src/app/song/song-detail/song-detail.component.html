@@ -1,1 +1,63 @@
-<p>detail works!</p>
+<div class="content">
+  <div *ngIf="song">
+    <app-toolbar title="{{ song.title }}"></app-toolbar>
+    <div class="song-detail">
+      <div class="song-header">
+        <h3>{{ song.title }} ({{ song.getArtistName() }})</h3>
+      </div>
+
+      <div class="song-image">
+        <img [src]="song.poster" alt="{{ song.title }}" />
+      </div>
+
+      <div class="song-content">
+        <div>
+          <span *ngFor="let genre of song.genre"># {{ genre }}</span>
+        </div>
+        <div>
+          <p><strong>Year:</strong> {{ song.year }}</p>
+          <p><strong>Duration:</strong> {{ song.duration }} min</p>
+          <p><strong>Rating:</strong> {{ song.rating }}</p>
+        </div>
+      </div>
+      <mat-list>
+        <mat-list-item lines="6">
+          <span matListItemTitle>Compañías</span>
+          <mat-chip-set>
+            <mat-chip
+              *ngFor="let companyName of song.getCompaniesNames()"
+              (click)="removeCompany(companyName)"
+              disabled
+              >{{ companyName }}</mat-chip
+            >
+          </mat-chip-set>
+        </mat-list-item>
+        <mat-list-item lines="6">
+          <span matListItemTitle>Género</span>
+          <mat-chip-set>
+            <mat-chip
+              *ngFor="let genre of song.genre"
+              (click)="removeGenre(genre)"
+              disabled
+              >{{ genre }}</mat-chip
+            >
+          </mat-chip-set>
+        </mat-list-item>
+        <mat-list-item>
+          <span matListItemTitle>País</span>
+          <span>{{ song.getCountry() }}</span>
+        </mat-list-item>
+        <mat-list-item>
+          <span matListItemTitle>Año</span>
+          {{ song.year }}
+        </mat-list-item>
+      </mat-list>
+    </div>
+  </div>
+  <button mat-fab class="fab-edit">
+    <mat-icon>edit</mat-icon>
+  </button>
+  <button mat-fab class="fab-delete">
+    <mat-icon>delete</mat-icon>
+  </button>
+</div>

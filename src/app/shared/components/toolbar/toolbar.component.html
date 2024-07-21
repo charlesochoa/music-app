@@ -1,6 +1,6 @@
-<mat-toolbar>
-  <button mat-icon-button>
-    <mat-icon>menu</mat-icon>
+<mat-toolbar (click)="goBack()">
+  <button mat-icon-button >
+    <mat-icon>{{ icon }}</mat-icon>
   </button>
   <span>{{ title }}</span>
 </mat-toolbar>
